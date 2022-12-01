@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Background extends StatelessWidget {
   const Background({super.key});
@@ -9,17 +8,77 @@ class Background extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
-      body: Column(
-        children: <Widget>[
-          Stack(
-            children: const <Widget>[
-              //WavyFooter(),
-              CirclePink(),
-              CirclePink2()
-              //CircleYellow(),
-            ],
-          )
+      body: Stack(
+        children: const <Widget>[
+          //WavyFooter(),
+          //const CirclePink(),
+          //const CirclePink2(),
+          //CircleShape(widthOffset: 140.w, heightOffset: -280.h, circleRadius: 250.r),
+          Circle(widthOffset: 30, heightOffset: -120, circleRadius: 120),
+          Circle(widthOffset: 120, heightOffset: -30, circleRadius: 120)
+          //CircleYellow(),
         ],
+      ),
+    );
+  }
+}
+
+class CircleShape extends StatelessWidget {
+  const CircleShape(
+      {super.key,
+      this.alignMent = Alignment.topRight,
+      required this.widthOffset,
+      required this.heightOffset,
+      required this.circleRadius,
+      this.circleColor = Colors.black38});
+
+  final AlignmentGeometry alignMent;
+  final double widthOffset;
+  final double heightOffset;
+  final double circleRadius;
+  final Color circleColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: alignMent,
+      child: Transform.translate(
+        offset: Offset(widthOffset, heightOffset),
+        child: CircleAvatar(
+          backgroundColor: circleColor,
+          radius: circleRadius,
+        ),
+      ),
+    );
+  }
+}
+
+class Circle extends StatelessWidget {
+  const Circle(
+      {super.key,
+      this.alignMent = Alignment.topRight,
+      required this.widthOffset,
+      required this.heightOffset,
+      required this.circleRadius,
+      this.circleColor = Colors.black38});
+
+  final AlignmentGeometry alignMent;
+  final double widthOffset;
+  final double heightOffset;
+  final double circleRadius;
+  final Color circleColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: alignMent,
+      child: Transform.translate(
+        offset: Offset(widthOffset, heightOffset),
+        child: Material(
+          color: circleColor,
+          shape: const CircleBorder(),
+          child: Padding(padding: EdgeInsets.all(circleRadius)),
+        ),
       ),
     );
   }
