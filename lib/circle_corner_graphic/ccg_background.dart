@@ -1,4 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+class BackgroundNew extends StatelessWidget {
+  const BackgroundNew({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: const [],
+      ),
+    );
+  }
+}
 
 class Background extends StatelessWidget {
   const Background({super.key});
@@ -8,16 +24,53 @@ class Background extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
-      body: Stack(
-        children: const <Widget>[
-          //WavyFooter(),
-          //const CirclePink(),
-          //const CirclePink2(),
-          //CircleShape(widthOffset: 140.w, heightOffset: -280.h, circleRadius: 250.r),
-          Circle(widthOffset: 30, heightOffset: -120, circleRadius: 120),
-          Circle(widthOffset: 120, heightOffset: -30, circleRadius: 120)
-          //CircleYellow(),
-        ],
+      body: SafeArea(
+        child: Stack(
+          children: <Widget>[
+            ScreenUtil().orientation == Orientation.portrait
+                ? Positioned(
+                    top: -0.25.sh,
+                    left: 0.6.sw,
+                    child: Material(
+                      color: Colors.black26,
+                      shape: const CircleBorder(
+                          side: BorderSide(color: Colors.black, width: 1.0)),
+                      child: Padding(padding: EdgeInsets.all(200.r)),
+                    ),
+                  )
+                : Positioned(
+                    top: -0.2.sh,
+                    left: 0.9.sw,
+                    child: Material(
+                      color: Colors.black26,
+                      shape: const CircleBorder(
+                          side: BorderSide(color: Colors.black, width: 1.0)),
+                      child: Padding(padding: EdgeInsets.all(200.r)),
+                    ),
+                  ),
+            ScreenUtil().orientation == Orientation.portrait
+                ? Positioned(
+                    top: -0.06.sh,
+                    left: 0.8.sw,
+                    child: Material(
+                      color: Colors.black26,
+                      shape: const CircleBorder(
+                          side: BorderSide(color: Colors.black, width: 1.0)),
+                      child: Padding(padding: EdgeInsets.all(0.4.sw)),
+                    ),
+                  )
+                : Positioned(
+                    top: -0.1.sh,
+                    left: 0.92.sw,
+                    child: Material(
+                      color: Colors.black26,
+                      shape: const CircleBorder(
+                          side: BorderSide(color: Colors.black, width: 1.0)),
+                      child: Padding(padding: EdgeInsets.all(0.2.sh)),
+                    ),
+                  )
+          ],
+        ),
       ),
     );
   }
@@ -60,7 +113,7 @@ class Circle extends StatelessWidget {
       required this.widthOffset,
       required this.heightOffset,
       required this.circleRadius,
-      this.circleColor = Colors.black38});
+      this.circleColor = const Color.fromRGBO(110, 190, 69, 50)});
 
   final AlignmentGeometry alignMent;
   final double widthOffset;
@@ -73,11 +126,11 @@ class Circle extends StatelessWidget {
     return Align(
       alignment: alignMent,
       child: Transform.translate(
-        offset: Offset(widthOffset, heightOffset),
+        offset: Offset(widthOffset.w, heightOffset),
         child: Material(
           color: circleColor,
           shape: const CircleBorder(),
-          child: Padding(padding: EdgeInsets.all(circleRadius)),
+          child: Padding(padding: EdgeInsets.all(circleRadius.r)),
         ),
       ),
     );

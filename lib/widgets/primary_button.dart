@@ -16,20 +16,20 @@ class PrimaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       elevation: 5,
-      borderRadius: BorderRadius.circular(10.r),
+      borderRadius: BorderRadius.circular(20.r),
       color: color,
       child: InkWell(
         onTap: onClciked,
-        borderRadius: BorderRadius.circular(10.r),
+        borderRadius: BorderRadius.circular(20.r),
         child: Container(
           alignment: Alignment.center,
           height: 50.h,
-          width: 200.w,
+          width: 373.w,
           child: Text(
             labelText.toUpperCase(),
             style: TextStyle(
-                fontSize: 16.sp,
-                fontWeight: FontWeight.bold,
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w600,
                 color: Colors.white),
           ),
         ),
